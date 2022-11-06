@@ -1,21 +1,21 @@
+// ignore_for_file: avoid_print
+
 /*
 Để tạo ra UI cần có 3 yếu tố chính là widget, element và renderObject
-+ Widget là 1 bản vẽ của UI (VD: giống bản vẽ thiết kế nhà cửa) 
-+ Element được hiểu là các mảng xanh (blue print mở trong widget tree inspector lúc run app) dùng để đại diện cho các mảnh UI ở 1 vị trí nào đó trên cây. 
++ Widget là 1 bản vẽ của UI (VD: giống bản vẽ thiết kế nhà cửa)
++ Element được hiểu là các mảng xanh (blue print mở trong widget tree inspector lúc run app) dùng để đại diện cho các mảnh UI ở 1 vị trí nào đó trên cây.
 + RenderObject là thành phần dùng để căn chỉnh kích thước, tô vẽ cho mảnh UI thông qua các thuộc tính mà mảnh UI đó cung cấp
 runApp(MyApp()) là 1 function dùng để triển khai widget được cung cấp và hiển thị nó lên màn hình. MyApp() ở đây chính là root widget tree = root element = root renderobject
 Khi tạo ra 1 widget, nếu widget đó là Stateless widget sẽ tạo ra Stateless element, Stateful widget sẽ tạo ra Stateful element
 Mỗi widget trong flutter thường có các thuộc tính riêng biệt khác nhau
 VD:
   Text({String data, textStyle(color, fontsize, font weight,...), textAlign,...})
-  - data là chuỗi dữ liệu để hiển thị lên màn hình 
+  - data là chuỗi dữ liệu để hiển thị lên màn hình
   - textStyle là kiểu của data hiển thị ra(màu của chữ, kích cỡ chữ, kiểu chữ,...)
   - textAlign: data truyền vào được căn chỉnh như thế nào (căn trái, căn phải, căn giữa,...)
 Có 2 loại widget trong flutter là Stateless widget và Stateful widget
 + Stateless widget: Là dạng widget tĩnh không có state. Nói cách khác là khi chạy ứng dụng runtime, trạng thái của dạng widget này không hề thay đổi (imutable)
 + Stateful widget: Là dạng widget động có state. Trạng thái của dạng widget này sẽ thay đổi khi chạy ứng dụng runtime (mutable)
-
-
 
 */
 
@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
       // home: Scaffold(
       //   body: _buildWidgets(),
       // ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Flutter Demo Home Page'), // chỗ này truyền lớp của stateful widget để hiển thị UI
     );
   }
 }
@@ -57,37 +57,9 @@ class _MyHomePageState extends State<MyHomePage> {
   int max = 5;
 
   void incrementCounter() {
-    if(mounted==true){
+    if (mounted == true) {
       setState(() {
         counter++;
-      // if (counter == max) {
-        // showGeneralDialog(
-        //   context: context,
-        //   barrierLabel: "Barrier",
-        //   barrierDismissible: true,
-        //   // barrierColor: Colors.black.withOpacity(0.5),
-        //   // transitionDuration: const Duration(milliseconds: 700),
-
-        //   pageBuilder: (_, __, ___) {
-        //     return Center(
-        //       child: Container(
-        //         height: 200,
-        //         width: 200,
-        //         decoration: const BoxDecoration(color: Colors.white),
-        //         child: Container(
-        //           height: 80,
-        //           width: 80,
-        //           decoration: const BoxDecoration(color: Colors.red),
-        //           child: const Text(
-        //             'This is max',
-        //           ),
-        //         ),
-        //       ),
-        //     );
-        //   },
-        // );
-        // max += 5;
-      // }
       });
     }
   }
@@ -103,40 +75,36 @@ class _MyHomePageState extends State<MyHomePage> {
         appBar: AppBar(
           title: Text(widget.title),
         ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              // const Text(
-              //   'You have pushed the button this many times:',
-              // ),
-              Text(
-                '$counter',
-                style: Theme.of(context).textTheme.headline4,
-              ),
-              SizedBox(
-                width: 100,
-                height: 50,
-                child: TextButton(
-                  // style: ButtonStyle(minimumSize: ),
-                  onPressed: incrementCounter,
-                  child: const Text(
-                    'CLICK',
-                    style: TextStyle(
-                      fontSize: 30,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-        // body: _buildWidgets(),
-        // floatingActionButton: FloatingActionButton(
-        //   onPressed: incrementCounter,
-        //   tooltip: 'Increment',
-        //   child: const Icon(Icons.add),
-        // ), // This trailing comma makes auto-formatting nicer for build methods.
+        body: const BuildWidgets(),
+
+        // body: Center(
+        //   child: Column(
+        //     mainAxisAlignment: MainAxisAlignment.center,
+        //     children: <Widget>[
+        //       // const Text(
+        //       //   'You have pushed the button this many times:',
+        //       // ),
+        //       Text(
+        //         '$counter',
+        //         style: Theme.of(context).textTheme.headline4,
+        //       ),
+        //       SizedBox(
+        //         width: 100,
+        //         height: 50,
+        //         child: TextButton(
+        //           // style: ButtonStyle(minimumSize: ),
+        //           onPressed: incrementCounter,
+        //           child: const Text(
+        //             'CLICK',
+        //             style: TextStyle(
+        //               fontSize: 30,
+        //             ),
+        //           ),
+        //         ),
+        //       ),
+        //     ],
+        //   ),
+        // ),
       );
 }
 
@@ -295,10 +263,9 @@ Widget _buildWidgets() {
         ),
         Container(
           width: double.infinity,
-          // height: double.infinity,
           height: 250,
           padding: const EdgeInsets.all(30),
-          // color: Colors.black,
+          // decoration: const BoxDecoration(color: Colors.green),
           child: const Text(
               'Lake Osechinen lies at the foot off the Bluemlisalp in thefweeeeeeeeeeeeeeeeeeee'),
         )
@@ -306,3 +273,39 @@ Widget _buildWidgets() {
     ),
   );
 }
+class BuildWidgets extends StatefulWidget {
+
+  const BuildWidgets({super.key});
+
+  @override
+  State<BuildWidgets> createState() => _BuildWidgetsState();
+}
+
+class _BuildWidgetsState extends State<BuildWidgets> {
+  @override
+  Widget build(BuildContext context) {
+    return _buildWidgets();
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

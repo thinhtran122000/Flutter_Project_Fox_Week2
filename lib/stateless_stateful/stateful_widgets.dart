@@ -2,8 +2,11 @@
 Stateful widget: Là dạng widget động có state. Trạng thái của dạng widget này sẽ thay đổi khi chạy ứng dụng runtime (mutable)
 Các loại Stateful widget thường được dùng: Text, Button, List View, Grid View
 Khác với Stateless widget, Stateful widget cũng có 2 phương thức chính:
- + createElement():
+ + createElement(): Phương thức này dùng để tạo ra element sau đó gắn vào root element tree khi ta thêm vào 1 widget vào root widget tree
  + createState(): 
+ + Widget build(BuildContext context):  Là phương thức dùng để xây dựng các widget
+ + BuildContext context: là 1 biến cho biết rằng vị trí của widget đó nằm ở đâu trên cây widget.
+ + State<NameOfObject extends StatefulWidget>: La
 */
 
 import 'package:flutter/material.dart';
@@ -42,24 +45,3 @@ class _MyStatefulWidgetsState extends State<MyStatefulWidgets> {
     });
   }
 }
-
-
-// class A{
-//   String? a;
-//   A(this. a);
-//   A.rrr(this.a);
-// }
-// class B extends A{
-//   // B(int a):super('gẻgrgrwef'){
-//   //   a = 10;
-//   // }
-//   B(String super.a);
-// }
-// class C extends B{
-//   C():super('grgre');
-// }
-
-// void main(List<String> args) {
-//   var c = C();
-//   print(c);
-// }
